@@ -78,4 +78,11 @@ Tile* Board::get_tile_at(int x, int y)
 }
 
 
+int Board::refresh()
+{
+    return coins;
+}
+
+
+
 

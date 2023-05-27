@@ -4,6 +4,10 @@
 
 #include "TerrainTile.hpp"
 #include <iostream>
+TerrainTile::TerrainTile()
+{
+    type = Type::TOMATO;
+}
 
 TerrainTile::TerrainTile(Type t)
 {
@@ -76,5 +80,6 @@ TerrainTile::Type TerrainTile::string_to_type(const std::string &s) {
     else
         throw "Invalid type string!";
 }
+
 
 

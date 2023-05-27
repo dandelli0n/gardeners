@@ -29,14 +29,15 @@ Board& Game::get_board()
 {
     return board;
 }
-void Game::add_coins()
-{
-    coins++;
-}
 
 void Game::set_coins(int c)
 {
     coins = c;
+}
+
+void Game::add_coins(int coin)
+{
+    coins += coin;
 }
 
 int Game::get_coins()

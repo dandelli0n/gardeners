@@ -151,7 +151,7 @@ QUEST_FUNC(sunflower_quest)
 
 QUEST_FUNC(rich_quest)
 {
-    return board.get_coins()*2;
+    return game.get_coins()*2;
 }
 
 //eval fns

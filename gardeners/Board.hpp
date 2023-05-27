@@ -14,14 +14,14 @@ class Board
 private:
     int width = 11;
     int height = 11;
-    //int coins;
+    int coins;
     std::vector<std::unique_ptr<Tile>> tiles;
 
 public:
     Board();
     int get_w();
     int get_h();
-    int get_coins() const;
+    //int get_coins() const;
 
     //void setTile(std::unique_ptr<Tile> t, int x, int y);
     //~Board();

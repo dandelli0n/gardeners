@@ -2,6 +2,7 @@
 #define GARDENERS_TASK_HPP
 
 #include "Board.hpp"
+#include "Game.hpp"
 #include <string>
 #include <cstdlib>
 

@@ -17,7 +17,7 @@ private:
     Type type;
 
 public:
-    //TerrainTile();
+    TerrainTile();
     TerrainTile(Type t);
     void set_type(Type t);
     Type get_type();

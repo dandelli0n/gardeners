@@ -16,12 +16,13 @@ private:
     static std::vector<Plant> plants;
 
 public:
-    //Plant();
+    Plant();
     Plant(std::string n, TerrainTile::Type t, Shape s, int time);
     TerrainTile get_tile();
     static void load_plant();
     Shape get_shape();
     int get_duration();
+    //Plant get_random_plant();
 
     //void align(); these things are better done in shape class I think
 

@@ -18,7 +18,7 @@ private:
     std::string playername;
     Board board;
     Task tasks[4];
-    //std::vector<Plant> plants;
+    std::vector<Plant> plants;
     int points;
     int coins;
 
@@ -26,14 +26,14 @@ private:
 public:
     Game(); //starts up game
     void set_points(int p);
-    void add_coins();
+    void add_coins(int);
     void set_coins(int c);
     int get_coins();
     void load();
     Board& get_board();
-    void run();
-    void gameLoop();
-    void save();
+    //void run();
+    //void gameLoop();
+    //void save();
     //~Game();
 
 };
