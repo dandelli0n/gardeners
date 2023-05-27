@@ -13,14 +13,22 @@
 class Shape
 {
     bool shape[16];
+    bool left_col_empty();
+    bool top_row_emty();
+    void shift_left();
+    void shift_up();
 
 public:
     Shape();
     Shape(const bool* t);
-
     bool& at(int x, int y);
     bool at(int x, int y) const;
-    void operator=(Shape&);
+    void set_at(int x, int y, int val);
+    Shape& operator=(const Shape&);
+    void align();
+    void rotate();
+    void mirror();
+    void copy();
 };
 
 

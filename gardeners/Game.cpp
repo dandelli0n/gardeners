@@ -8,14 +8,9 @@
 
 Game::Game()
 {
-    playername = "";
     points = 0;
     coins = 0;
-    for(int i = 0; i < 4; ++i)
-    {
-        tasks[i] = Task();
-    }
-    board = Board();
+    load();
 }
 
 void Game::set_points(int p)
@@ -26,8 +21,8 @@ void Game::set_points(int p)
 
 void Game::load()
 {
-    std::ifstream f;
-    f.open("");
+    Plant::load_plant();
+
 }
 
 Board& Game::get_board()

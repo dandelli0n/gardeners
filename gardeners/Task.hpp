@@ -6,6 +6,26 @@
 #include <cstdlib>
 
 
+#include <unordered_map>
+typedef std::function<int(Game &, Board &)> quest_type;
+
+class QuestNameMapper
+{
+    static std::unordered_map<std::string, quest_type> quest_mapping;
+
+public:
+    QuestNameMapper(quest_type quest, const std::string& name);
+
+    static quest_type find(const std::string& quest_name);
+
+
+};
+
+#define QUEST_FUNC(function_name) int function_name (Game&, Board&); static QuestNameMapper qmapper ##function_name (function_name, #function_name); int function_name (Game& game, Board& board)
+
+
+
+
 class Task {
     std::string name;
     std::string description;
@@ -13,7 +33,7 @@ class Task {
     static std::vector<Task> tasks;
     static bool tasks_loaded;
     static void load_tasks();
-    quests::type quest_fn;
+    quest_type quest_fn;
 
     Task(std::string name, std::string description, std::string id);
 public:

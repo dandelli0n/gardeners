@@ -15,10 +15,10 @@ void TerrainTile::set_type(TerrainTile::Type t)
     type = t;
 }
 
-TerrainTile::TerrainTile()
+/*TerrainTile::TerrainTile()
 {
     type = Type::VOID;
-}
+}*/
 
 void TerrainTile::draw()
 {
@@ -36,9 +36,7 @@ void TerrainTile::draw()
         case Type::SUNFLOWER:
             std::cout << "[S]";
             break;
-        case Type::VOID:
-            std::cout << "[?]";
-            break;
+
     }
 
 
@@ -57,14 +55,26 @@ std::string TerrainTile::getName()
             return "bean";
         case Type::SUNFLOWER:
             return "sunflower";
-        case Type::VOID:
-            return "0";
     }
 }
 
 TerrainTile::Type TerrainTile::get_type()
 {
     return type;
+}
+
+TerrainTile::Type TerrainTile::string_to_type(const std::string &s) {
+
+    if(s == "tomato")
+        return Type::TOMATO;
+    else if (s == "lettuce")
+        return Type::LETTUCE;
+    else if(s == "bean")
+        return Type::BEAN;
+    else if (s== "sunflower")
+        return Type::SUNFLOWER;
+    else
+        throw "Invalid type string!";
 }
 
 

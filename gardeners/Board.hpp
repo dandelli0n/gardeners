@@ -27,20 +27,14 @@ public:
     //~Board();
     //void setup();
     void draw();
+    Tile* get_tile_at(int x, int y);
     int refresh(); //gets coins from the lakes
     void set_tile(int sor, int oszl, std::unique_ptr<Tile> t);
     void place_plant(int x, int y, Plant p);
 
     //eval fns
 };
-namespace quests
-{
-    typedef std::function<int(Game&, Board&)> type;
 
-    int tomato_quest(Game& g, Board& b);
-    int sunflower_quest(Game& g, Board& b);
-    int bean_quest(Game& g, Board& b);
-    int rich_quest(Game& g, Board& b);
-}
+
 
 #endif //GARDENERS_BOARD_HPP

@@ -59,44 +59,6 @@ int Board::get_h()
 }
 
 
-int Board::tomato_quest()
-{
-    int count = 0;
-    for (int i = 0; i < 11*11; ++i)
-    {
-        if(tiles[i]->getName() == "tomato")
-            count++;
-    }
-    return count;
-}
-
-int Board::sunflower_quest()
-{
-    int count = 0;
-    for (int i = 0; i < 11*11; ++i)
-    {
-        if(tiles[i]->getName() == "sunflower")
-            count++;
-    }
-    return count;
-}
-
-int Board::bean_quest()
-{
-    int count = 0;
-    for (int i = 0; i < 11*11; ++i)
-    {
-        if(tiles[i]->getName() == "bean")
-            count++;
-    }
-    return count;
-}
-
-int Board::rich_quest(int coins)
-{
-    return coins * 2;
-}
-
 void Board::place_plant(int x, int y, Plant p)
 {
     int ofset = 0;
@@ -105,10 +67,15 @@ void Board::place_plant(int x, int y, Plant p)
         for (int j = 0; j < 4; ++j)
         {
             set_tile(i, j, std::make_unique<TerrainTile>(p.get_tile().get_type()));//p.get_tile().get_type());
-            //std::make_unique<NonTerrainTile>(NonTerrainTile::Type::LAKE
             ofset++;
         }
     }
 }
+
+Tile* Board::get_tile_at(int x, int y)
+{
+    return tiles[x + (width * y)].get();
+}
+
 
 

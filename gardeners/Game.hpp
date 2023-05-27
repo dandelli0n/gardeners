@@ -18,7 +18,7 @@ private:
     std::string playername;
     Board board;
     Task tasks[4];
-    std::vector<Plant> plants;
+    //std::vector<Plant> plants;
     int points;
     int coins;
 
