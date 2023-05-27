@@ -1,0 +1,12 @@
+Tomato farm
+1 Point for each tomato planted
+tomato_quest
+Sunflower fields
+1 Point for each sunflower planted
+sunflower_quest
+BEANS!!
+1 Point for each bean planted
+bean_quest
+Getting rich
+2 Points for each coin
+rich_quest

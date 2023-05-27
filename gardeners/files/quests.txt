@@ -1,0 +1,12 @@
+Forestry
+1 Point for each forest
+forestry_quest
+Metropolis
+1 Point for each village
+city_quest
+Great River
+1 Point for each river
+river_quest
+Great Vault
+2 Points for each coin
+vault_quest

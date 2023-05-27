@@ -1,0 +1,3 @@
+D:/egyetem/4.felev/frog2/HF/gardeners/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/egyetem/4.felev/frog2/HF/gardeners/cmake-build-debug/CMakeFiles/gardeners.dir
+D:/egyetem/4.felev/frog2/HF/gardeners/cmake-build-debug/CMakeFiles/rebuild_cache.dir
