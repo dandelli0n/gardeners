@@ -6,14 +6,11 @@
 #include <fstream>
 #include <utility>
 
-Plant::Plant() :  tile()
-{
-    int t_num = rand() % plants.size(); //need to do something about duplications but rn i cant
-    name = plants.at(t_num).name;
-    tile.set_type((plants.at(t_num).get_tile().get_type()));
-    shape = plants.at(t_num).get_shape();
-    duration = plants.at(t_num).get_duration();
-}
+
+std::vector<Plant> Plant::plants;
+
+Plant::Plant() :  tile(), duration(0)
+{ }
 
 
 Plant::Plant(std::string n, TerrainTile::Type type, Shape s, int time) : tile(type)
@@ -68,6 +65,17 @@ void Plant::load_plant()
         plants.emplace_back(name, type, shape, duration);
     }
     f.close();
+}
+
+Plant Plant::get_random_plant()
+{
+    Plant p;
+    int t_num = rand() % plants.size(); //need to do something about duplications but rn i cant
+    p.name = plants.at(t_num).name;
+    p.tile.set_type((plants.at(t_num).get_tile().get_type()));
+    p.shape = plants.at(t_num).get_shape();
+    p.duration = plants.at(t_num).get_duration();
+    return p;
 }
 
 

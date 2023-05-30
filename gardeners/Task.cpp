@@ -6,6 +6,8 @@
 #include <fstream>
 #include <iostream>
 #include <utility>
+#include "Game.hpp"
+#include <stdexcept>
 
 
 std::vector<Task> Task::tasks;
@@ -79,7 +81,7 @@ Task::Task(std::string name, std::string description, std::string id) : name(std
 quest_type QuestNameMapper::find(const std::string &quest_name)
 {
     if (quest_mapping.find(quest_name) == quest_mapping.end())
-        throw "aaaaaaaaaaa";
+        throw std::out_of_range("Quest name out of range");
 
     return quest_mapping[quest_name];
 }

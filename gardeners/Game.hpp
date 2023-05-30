@@ -29,12 +29,13 @@ public:
     void add_coins(int);
     void set_coins(int c);
     int get_coins();
-    void load();
+    void load(); //ebbe kene betolteni mentett jatekallast, ami ebbe van azt at kene tenni a run()-ba
     Board& get_board();
-    //void run();
-    //void gameLoop();
-    //void save();
-    //~Game();
+    void place_plant(Plant& p);
+    void run(); // szo szerint ugyanaz ami most load()-ban van
+    void gameLoop(); //while(running) frame kirajzolas, input olvasas etc (mint kartografusokba)
+    //void save(); //kilepeskor save-el egyet file-ba idk
+    //~Game(); //nem kell a smart pointerek miatt
 
 };
 

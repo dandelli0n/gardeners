@@ -26,9 +26,9 @@ public:
     void set_at(int x, int y, int val);
     Shape& operator=(const Shape&);
     void align();
-    void rotate();
-    void mirror();
-    void copy();
+    //void rotate();
+    //void mirror();
+    //void copy();
 };
 
 

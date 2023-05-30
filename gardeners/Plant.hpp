@@ -22,7 +22,7 @@ public:
     static void load_plant();
     Shape get_shape();
     int get_duration();
-    //Plant get_random_plant();
+    static Plant get_random_plant();
 
     //void align(); these things are better done in shape class I think
 
