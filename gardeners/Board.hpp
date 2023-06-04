@@ -5,6 +5,7 @@
 #include <vector>
 #include <memory>
 #include "Plant.hpp"
+#include "Renderer.hpp"
 #include <functional>
 
 class Game;
@@ -14,25 +15,27 @@ class Board
 private:
     int width = 11;
     int height = 11;
-    int coins;
     std::vector<std::unique_ptr<Tile>> tiles;
+
+    SDL_Surface* fenceSurface;
+    SDL_Texture* fenceTexture = nullptr;
+
+    void notifyTile(int x, int y, Tile* t);
 
 public:
     Board();
-    int get_w();
-    int get_h();
-    //int get_coins() const;
+    int getW();
+    int getH();
 
-    //void setTile(std::unique_ptr<Tile> t, int x, int y);
-    //~Board();
-    //void setup();
-    void draw();
-    Tile* get_tile_at(int x, int y);
-    int refresh(); //gets coins from the lakes
-    void set_tile(int sor, int oszl, std::unique_ptr<Tile> t);
-    void place_plant(int x, int y, Plant p);
+    int getCoins() const;
 
-    //eval fns
+    void clear();
+
+    void draw(Renderer* r);
+    Tile* getTileAt(int x, int y);
+    void setTile(int x, int y, std::unique_ptr<Tile> t);
+    bool canPlacePlant(int x, int y, Plant& p);
+    bool placePlant(int x, int y, Plant& p);
 };
 
 

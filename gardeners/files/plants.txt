@@ -1,0 +1,27 @@
+PlantDefinition
+
+name "Tomato garden"
+
+time 3
+
+type Tomato
+shape ##..##..........
+
+type Tomato
+shape ####............
+
+EndOfPlantDefinition
+
+PlantDefinition
+
+name "Sunflowers"
+
+time 2
+
+type Sunflower
+shape #...#...#...#...
+
+type Sunflower
+shape #....#....#....#
+
+EndOfPlantDefinition

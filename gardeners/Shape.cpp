@@ -4,11 +4,21 @@
 
 #include "Shape.hpp"
 
-Shape::Shape(const bool* t)
+void swapBool(bool* a, bool* b)
+{
+    bool t = *a;
+    *a = *b;
+    *b = t;
+}
+
+Shape::Shape(const std::string& shapeString)
 {
     for (int i = 0; i < 16; ++i)
     {
-        shape[i] = t[i];
+        if (shapeString[i] == '#')
+            shape[i] = true;
+        else
+            shape[i] = false;
     }
 }
 
@@ -40,59 +50,88 @@ bool Shape::at(int x, int y) const
     return shape[x + (y * 4)];
 }
 
-void Shape::set_at(int x, int y, int val)
+void Shape::setAt(int x, int y, int val)
 {
     shape[x + (y*4)] = val;
 }
 
-bool Shape::left_col_empty() {
+bool Shape::leftColEmpty() {
     for (int i = 0; i < 4; ++i)
     {
-        if(!this->at(0, i))
+        if(at(0, i))
             return false;
     }
     return true;
 }
 
-bool Shape::top_row_emty()
+bool Shape::topRowEmty()
 {
     for (int i = 0; i < 4; ++i)
     {
-        if(!this->at(i, 0))
+        if(at(i, 0))
             return false;
     }
     return true;
 }
 
-void Shape::shift_left()
+void Shape::shiftLeft()
 {
+    std::array<bool, 16> originalShape = shape;
+    shape = {};
     for (int y = 0; y < 4; ++y)
     {
         for (int x = 0; x < 3; ++x)
         {
-            set_at(x, y, this->at(x+1, y));
+            setAt(x, y, originalShape[(x+1) + y * 4]);
         }
     }
 }
 
-void Shape::shift_up()
+void Shape::shiftUp()
 {
+    std::array<bool, 16> originalShape = shape;
+    shape = {};
     for (int y = 0; y < 3; ++y)
     {
         for (int x = 0; x < 4; ++x)
         {
-            set_at(x, y, this->at(x, y+1));
+            setAt(x, y, originalShape[x + ((y+1) * 4)]);
         }
     }
 }
 
 void Shape::align()
 {
-    while(top_row_emty())
-        shift_up();
+    while(topRowEmty())
+        shiftUp();
 
-    while (left_col_empty())
-        shift_left();
+    while (leftColEmpty())
+        shiftLeft();
+}
+
+void Shape::rotate()
+{
+    std::array<bool, 16> originalShape = shape;
+
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            setAt(i, j, originalShape[j + i * 4]);
+        }
+    }
+
+    originalShape = shape;
+
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            setAt(i, j, originalShape[i + (4 - 1 - j) * 4]);
+        }
+    }
+
+    align();
 }
 
 

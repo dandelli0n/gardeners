@@ -5,80 +5,154 @@
 #include "Plant.hpp"
 #include <fstream>
 #include <utility>
+#include <iostream>
 
 
-std::vector<Plant> Plant::plants;
-
-Plant::Plant() :  tile(), duration(0)
+Plant::Plant() : duration(0)
 { }
 
 
-Plant::Plant(std::string n, TerrainTile::Type type, Shape s, int time) : tile(type)
+Plant::Plant(std::string n, int time, std::vector<ShapeAndMaker> shapesAndMakers) : name(std::move(n)), shapesAndMakers(std::move(shapesAndMakers)), duration(time)
+{}
+
+Shape& Plant::getShape()
 {
-    name = std::move(n);
-    shape = s;
-    tile.set_type(type);
-    duration = time;
+    return shapesAndMakers[selection].s;
 }
 
-TerrainTile Plant::get_tile()
-{
-    return tile;
-}
-
-Shape Plant::get_shape()
-{
-    return shape;
-}
-
-int Plant::get_duration()
+int Plant::getDuration()
 {
     return duration;
 }
 
-void Plant::load_plant()
+std::vector<Plant> Plant::loadPlants()
 {
-    std::ifstream f;
-    f.open("plants.txt"); //file does not exist yet
-    std::string buf;
-
-    std::string name;
-    Shape shape;
-    TerrainTile::Type type;
-    int duration;
-    bool boolbuf[16];
-
-    while(std::getline(f, buf))
+    enum class Mode
     {
-        name = buf;
-        std::getline(f, buf);
-        for (int i = 0; i < 16; ++i)
+        KeywordSearch, DefinitionSearch, NameDataSearch, TypeDataSearch, ShapeDataSearch, TimeDataSearch
+    } currentMode = Mode::DefinitionSearch;
+
+    std::vector<Plant> plants;
+    std::ifstream plantsFile("files/plants.txt");
+
+    std::string nextWord;
+
+    std::string nameData;
+
+    std::vector<std::string> shapeData;
+    std::vector<std::string> typeData;
+
+    std::string dataStream;
+
+    int timeData = 0;
+
+    while(plantsFile >> nextWord)
+    {
+        if (nextWord == "EndOfPlantDefinition")
         {
-            boolbuf[i] = (buf[i] == '1');
+            std::vector<ShapeAndMaker> shapesAndMakers;
+            shapesAndMakers.reserve(shapeData.size());
+
+            for (int i = 0; i < shapeData.size(); i++)
+            {
+                shapesAndMakers.push_back({TerrainTile::getMakerForType(typeData[i]), Shape(shapeData[i])});
+            }
+
+            plants.emplace_back(nameData, timeData, shapesAndMakers);
+
+            shapeData.clear();
+            typeData.clear();
+
+            currentMode = Mode::DefinitionSearch;
         }
 
-        f >> buf;
-        type = TerrainTile::string_to_type(buf);
+        switch (currentMode)
+        {
+            case Mode::KeywordSearch:
 
-        f >> duration;
-        shape.align();
-        plants.emplace_back(name, type, shape, duration);
+                dataStream.clear();
+                if (nextWord == "name")
+                    currentMode = Mode::NameDataSearch;
+
+                if (nextWord == "shape")
+                    currentMode = Mode::ShapeDataSearch;
+
+                if (nextWord == "type")
+                    currentMode = Mode::TypeDataSearch;
+
+                if (nextWord == "time")
+                    currentMode = Mode::TimeDataSearch;
+
+                if (currentMode == Mode::KeywordSearch)
+                    std::cout << "Unexpected keyword in plants.txt! \"" << nextWord << "\"\n";
+
+                break;
+
+            case Mode::DefinitionSearch:
+
+                if (nextWord == "PlantDefinition")
+                    currentMode = Mode::KeywordSearch;
+
+                break;
+
+            case Mode::NameDataSearch:
+                dataStream.append(" " + nextWord);
+
+                if (dataStream[dataStream.size() - 1] == '"')
+                {
+                    nameData = dataStream.substr(2, dataStream.size() - 3);
+                    currentMode = Mode::KeywordSearch;
+                }
+
+                break;
+
+            case Mode::TypeDataSearch:
+
+                typeData.push_back(nextWord);
+                currentMode = Mode::KeywordSearch;
+                break;
+
+            case Mode::ShapeDataSearch:
+                shapeData.push_back(nextWord);
+                currentMode = Mode::KeywordSearch;
+                break;
+
+            case Mode::TimeDataSearch:
+                timeData = std::stoi(nextWord);
+                currentMode = Mode::KeywordSearch;
+                break;
+        }
     }
-    f.close();
+
+    return plants;
 }
 
-Plant Plant::get_random_plant()
+std::unique_ptr<Tile> Plant::getNewTile()
 {
-    Plant p;
-    int t_num = rand() % plants.size(); //need to do something about duplications but rn i cant
-    p.name = plants.at(t_num).name;
-    p.tile.set_type((plants.at(t_num).get_tile().get_type()));
-    p.shape = plants.at(t_num).get_shape();
-    p.duration = plants.at(t_num).get_duration();
-    return p;
+    return shapesAndMakers[selection].tileMaker();
 }
 
+void Plant::nextSelection()
+{
+    selection++;
+    selection %= shapesAndMakers.size();
+}
 
+Shape Plant::getCurrentShape()
+{
+    return shapesAndMakers[selection].s;
+}
 
+void Plant::previousSelection()
+{
+    selection--;
+    if (selection < 0)
+        selection = shapesAndMakers.size() - 1;
+}
+
+std::string Plant::getName() const
+{
+    return name;
+}
 
 

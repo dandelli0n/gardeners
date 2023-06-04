@@ -10,42 +10,30 @@
 #include <stdexcept>
 
 
-std::vector<Task> Task::tasks;
-bool Task::tasks_loaded = false;
+std::unordered_map<std::string, questType> QuestNameMapper::questMapping;
 
-std::unordered_map<std::string, quest_type> QuestNameMapper::quest_mapping;
 
-Task::Task()
-{
-    if (!tasks_loaded)
-        load_tasks();
-
-    int t_num = rand() % tasks.size(); //need to do something about duplications but rn i cant
-    name = tasks.at(t_num).name;
-    description = tasks.at(t_num).description;
-    id = tasks.at(t_num).id;
-    quest_fn = QuestNameMapper::find(id);
-}
-
-std::string Task::get_name()
+std::string Task::getName()
 {
     return name;
 }
 
-std::string Task::get_desc()
+std::string Task::getDesc()
 {
     return description;
 }
 
-std::string Task::get_id()
+std::string Task::getId()
 {
     return id;
 }
 
-void Task::load_tasks()
+std::vector<Task> Task::loadTasks()
 {
-    std::ifstream f;
-    f.open("quests.txt");
+    std::vector<Task> tasks;
+
+    std::ifstream f("quests.txt");
+
     std::string buf;
 
     std::string name;
@@ -66,29 +54,33 @@ void Task::load_tasks()
         std::getline(f, buf);
         id = buf;
 
-        tasks.push_back(Task(name, description, id));
+        tasks.emplace_back(name, description, id);
     }
-    f.close();
 
-    tasks_loaded = true;
+    return tasks;
 }
 
 Task::Task(std::string name, std::string description, std::string id) : name(std::move(name)), description(std::move(description)), id(std::move(id))
 {
-
+    questFn = QuestNameMapper::find(this->id);
 }
 
-quest_type QuestNameMapper::find(const std::string &quest_name)
+int Task::evaluate(Game &game, Board &board)
 {
-    if (quest_mapping.find(quest_name) == quest_mapping.end())
+    return questFn(game, board);
+}
+
+questType QuestNameMapper::find(const std::string &questName)
+{
+    if (questMapping.find(questName) == questMapping.end())
         throw std::out_of_range("Quest name out of range");
 
-    return quest_mapping[quest_name];
+    return questMapping[questName];
 }
 
-QuestNameMapper::QuestNameMapper(quest_type quest, const std::string &name)
+QuestNameMapper::QuestNameMapper(questType quest, const std::string &name)
 {
-    quest_mapping[name] = quest;
+    questMapping[name] = quest;
 }
 
 QUEST_FUNC(tomato_quest)
@@ -99,7 +91,7 @@ QUEST_FUNC(tomato_quest)
     {
         for (int j = 0; j < 11; ++j)
         {
-            if(board.get_tile_at(j, i)->getName() == "tomato")
+            if(board.getTileAt(j, i)->getName() == "Tomato")
                 count++;
         }
     }
@@ -114,7 +106,7 @@ QUEST_FUNC(lettuce_quest)
     {
         for (int j = 0; j < 11; ++j)
         {
-            if(board.get_tile_at(j, i)->getName() == "lettuce")
+            if(board.getTileAt(j, i)->getName() == "Lettuce")
                 count++;
         }
     }
@@ -129,7 +121,7 @@ QUEST_FUNC(bean_quest)
     {
         for (int j = 0; j < 11; ++j)
         {
-            if(board.get_tile_at(j, i)->getName() == "bean")
+            if(board.getTileAt(j, i)->getName() == "Bean")
                 count++;
         }
     }
@@ -144,7 +136,7 @@ QUEST_FUNC(sunflower_quest)
     {
         for (int j = 0; j < 11; ++j)
         {
-            if(board.get_tile_at(j, i)->getName() == "sunflower")
+            if(board.getTileAt(j, i)->getName() == "Sunflower")
                 count++;
         }
     }
@@ -153,7 +145,7 @@ QUEST_FUNC(sunflower_quest)
 
 QUEST_FUNC(rich_quest)
 {
-    return game.get_coins()*2;
+    return game.getCoins() * 2;
 }
 
 //eval fns

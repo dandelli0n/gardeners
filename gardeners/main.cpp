@@ -13,28 +13,21 @@ struct p {
     int x; int y;
 };
 
+#undef main
 int main() {
-
-    auto quest = QuestNameMapper::find("tomato_aasdfasdfsuest");
-    Game game;
-    Board& b = game.get_board();
-    //b.draw();
-    std::string a;
-    std::string str = "b";
-    a = str;
-    b.set_tile(1, 2, std::make_unique<TerrainTile>(TerrainTile::Type::TOMATO));
-    //b.draw();
-    //int point = b.tomato_quest();
-    //std::cout << a << ", " << str << ", tomatoes: " << point;
+    SDL_Init(SDL_INIT_EVERYTHING);
+    TTF_Init();
 
 
-    std::vector<p> v;
-    for (int i = 0; i < 99; i++)
-        v.push_back({i, i});
+    SDL_Window* window = SDL_CreateWindow("Gardeners", 50, 50, windowWidth, windowHeight, NULL);
 
-    std::sort(v.begin(), v.end(),
-              [](const p& a, const p& b){ return a.x > b.y; }
-              );
+    SDL_Renderer* sdlRenderer = SDL_CreateRenderer(window, NULL, NULL);
+    auto renderer = std::make_unique<Renderer>(sdlRenderer);
+
+    Game game(renderer.get());
+
+    game.run();
+
 
 
     return 0;

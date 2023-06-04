@@ -3,24 +3,36 @@
 #ifndef GARDENERS_NONTERRAINTILE_HPP
 #define GARDENERS_NONTERRAINTILE_HPP
 
+#include "Renderer.hpp"
 
-class NonTerrainTile : public Tile
+class LakeTile : public Tile
 {
 public:
-    enum class Type
-    {
-        LAKE, EMPTY
-    };
+    void newTilePlacedNext(Tile* t) override;
+    int worthPoints() const override;
+
+    void draw(Renderer* r, int x, int y) override;
+
+    std::string getName() const override;
+
+    LakeTile();
+    ~LakeTile();
 
 private:
-    Type type;
+    int placedNext = 0;
 
+    SDL_Texture* openTexture = nullptr;
+    SDL_Texture* surroundedTexture = nullptr;
+
+    SDL_Surface* openSurface = nullptr;
+    SDL_Surface* surroundedSurface = nullptr;
+};
+
+class EmptyTile : public Tile
+{
 public:
-    NonTerrainTile(Type a);
-    void draw() override;
-    bool isOpen() override;
-    std::string getName() override;
-    ~NonTerrainTile();
+    bool isOpen() const override;
+    std::string getName() const override;
 };
 
 

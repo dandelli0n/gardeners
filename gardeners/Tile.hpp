@@ -3,13 +3,19 @@
 #ifndef GARDENERS_TILE_HPP
 #define GARDENERS_TILE_HPP
 
+#include "Renderer.hpp"
 
 class Tile
 {
 public:
-    virtual bool isOpen() = 0;
-    virtual void draw() = 0;
-    virtual std::string getName() = 0;
+    virtual void newTilePlacedNext(Tile* t);
+    virtual int worthPoints() const;
+
+    virtual bool isOpen() const;
+
+    virtual void draw(Renderer* r, int x, int y);
+
+    virtual std::string getName() const = 0;
 };
 
 

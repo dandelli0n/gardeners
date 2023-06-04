@@ -6,28 +6,29 @@
 #define GARDENERS_SHAPE_HPP
 
 #include <vector>
+#include <array>
 #include <memory>
 #include "Tile.hpp"
 #include "TerrainTile.hpp"
 
 class Shape
 {
-    bool shape[16];
-    bool left_col_empty();
-    bool top_row_emty();
-    void shift_left();
-    void shift_up();
+    std::array<bool, 16> shape = {};
+    bool leftColEmpty();
+    bool topRowEmty();
+    void shiftLeft();
+    void shiftUp();
 
 public:
     Shape();
-    Shape(const bool* t);
+    Shape(const std::string& shapeString);
     bool& at(int x, int y);
     bool at(int x, int y) const;
-    void set_at(int x, int y, int val);
+    void setAt(int x, int y, int val);
     Shape& operator=(const Shape&);
     void align();
-    //void rotate();
-    //void mirror();
+    void rotate();
+    void mirror();
     //void copy();
 };
 

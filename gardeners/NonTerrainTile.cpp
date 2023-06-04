@@ -1,41 +1,79 @@
-//
-// Created by Vikiii on 14/05/2023.
-//
-
 #include "NonTerrainTile.hpp"
-#include <iostream>
 
-NonTerrainTile::NonTerrainTile(Type a) : type(a)
-{}
-
-bool NonTerrainTile::isOpen()
+void LakeTile::newTilePlacedNext(Tile *t)
 {
-    if(type == Type::EMPTY)
-        return true;
-
-    return false;
+    if (!t->isOpen())
+        placedNext++;
 }
 
-void NonTerrainTile::draw()
+int LakeTile::worthPoints() const
 {
-    if(type == Type::EMPTY)
-        std::cout << "[ ]";
-    else
-        std::cout << "[O]";
+    if (placedNext >= 4)
+        return 1;
+
+    return 0;
 }
 
-std::string NonTerrainTile::getName()
+LakeTile::LakeTile()
 {
-    switch (type)
+    openSurface = SDL_LoadBMP("files/sprites/fence.bmp");
+    surroundedSurface = SDL_LoadBMP("files/sprites/bean.bmp");
+}
+
+void LakeTile::draw(Renderer *r, int x, int y)
+{
+    if (openTexture == nullptr)
+        openTexture = SDL_CreateTextureFromSurface(r->getSDLRenderer(), openSurface);
+
+    if (surroundedTexture == nullptr)
+        surroundedTexture = SDL_CreateTextureFromSurface(r->getSDLRenderer(), surroundedSurface);
+
+    SDL_Rect rect;
+    rect.x = x;
+    rect.y = y;
+
+    rect.w = 64;
+    rect.h = 64;
+
+    SDL_Texture* texToUse = openTexture;
+
+    SDL_Color blue = {55, 55, 200, 255};
+    SDL_Color lblue = {155, 155, 200, 255};
+
+
+    r->fillRect(rect, lblue);
+
+    if (placedNext >= 4)
     {
-        case Type::EMPTY:
-            return "empty";
-        case Type::LAKE:
-            return "lake";
+        texToUse = surroundedTexture;
+        r->fillRect(rect, blue);
     }
+
+
+
+    //r->drawTexture(texToUse, rect);
 }
 
-NonTerrainTile::~NonTerrainTile()
+std::string LakeTile::getName() const
 {
+    return "Lake";
+}
 
+LakeTile::~LakeTile()
+{
+    SDL_DestroyTexture(openTexture);
+    SDL_DestroyTexture(surroundedTexture);
+
+    SDL_FreeSurface(openSurface);
+    SDL_FreeSurface(surroundedSurface);
+}
+
+std::string EmptyTile::getName() const
+{
+    return "Empty";
+}
+
+bool EmptyTile::isOpen() const
+{
+    return true;
 }

@@ -1,85 +1,103 @@
-//
-// Created by Vikiii on 14/05/2023.
-//
-
 #include "TerrainTile.hpp"
-#include <iostream>
-TerrainTile::TerrainTile()
+
+void TerrainTile::draw(Renderer *r, int x, int y)
 {
-    type = Type::TOMATO;
+    if (texture == nullptr)
+        texture = SDL_CreateTextureFromSurface(r->getSDLRenderer(), surface);
+
+    SDL_Rect rect;
+    rect.x = x;
+    rect.y = y;
+
+    rect.w = 64;
+    rect.h = 64;
+
+    r->drawTexture(texture, rect);
 }
 
-TerrainTile::TerrainTile(Type t)
+std::string TerrainTile::getName() const
 {
-    type = t;
+    return nameString;
 }
 
-void TerrainTile::set_type(TerrainTile::Type t)
+TerrainTile::TerrainTile(std::string nameString, const std::string& resourceName) : nameString(std::move(nameString))
 {
-    type = t;
+    surface = SDL_LoadBMP(std::string("files/sprites/" + resourceName).c_str());
 }
 
-/*TerrainTile::TerrainTile()
+std::unordered_map<std::string, std::function<std::unique_ptr<Tile>()>> TerrainTile::typeNameMakerMapping;
+std::function<std::unique_ptr<Tile>()> TerrainTile::getMakerForType(const std::string &typeName)
 {
-    type = Type::VOID;
-}*/
-
-void TerrainTile::draw()
-{
-    switch (type)
-    {
-        case Type::TOMATO:
-            std::cout << "[T]";
-            break;
-        case Type::LETTUCE:
-            std::cout << "[L]";
-            break;
-        case Type::BEAN:
-            std::cout << "[B]";
-            break;
-        case Type::SUNFLOWER:
-            std::cout << "[S]";
-            break;
-
-    }
-
-
-
+    return typeNameMakerMapping[typeName];
 }
 
-std::string TerrainTile::getName()
+void TerrainTile::registerMaker(std::function<std::unique_ptr<Tile>()> &func, const std::string& typeName)
 {
-    switch (type)
-    {
-        case Type::TOMATO:
-            return "tomato";
-        case Type::LETTUCE:
-            return "lettuce";
-        case Type::BEAN:
-            return "bean";
-        case Type::SUNFLOWER:
-            return "sunflower";
-    }
+    typeNameMakerMapping[typeName] = func;
 }
 
-TerrainTile::Type TerrainTile::get_type()
+TerrainTile::~TerrainTile()
 {
-    return type;
+    SDL_FreeSurface(surface);
+    SDL_DestroyTexture(texture);
 }
 
-TerrainTile::Type TerrainTile::string_to_type(const std::string &s) {
+TomatoTile::TomatoTile() : TerrainTile("Tomato", "tomato.bmp")
+{}
 
-    if(s == "tomato")
-        return Type::TOMATO;
-    else if (s == "lettuce")
-        return Type::LETTUCE;
-    else if(s == "bean")
-        return Type::BEAN;
-    else if (s== "sunflower")
-        return Type::SUNFLOWER;
-    else
-        throw "Invalid type string!";
+std::unique_ptr<Tile> TomatoTile::tomatoTileMaker()
+{
+    std::unique_ptr<Tile> tile(new TomatoTile);
+    return std::move(tile);
 }
 
+void TomatoTile::registerMakerFunc()
+{
+    std::function<std::unique_ptr<Tile>()> f = tomatoTileMaker;
+    TerrainTile::registerMaker(f, "Tomato");
+}
 
+BeanTile::BeanTile() : TerrainTile("Bean", "bean.bmp")
+{}
 
+void BeanTile::registerMakerFunc()
+{
+    std::function<std::unique_ptr<Tile>()> f = beanTileMaker;
+    TerrainTile::registerMaker(f, "Bean");
+}
+
+std::unique_ptr<Tile> BeanTile::beanTileMaker()
+{
+    std::unique_ptr<Tile> tile(new BeanTile);
+    return std::move(tile);
+}
+
+SunflowerTile::SunflowerTile() : TerrainTile("Sunflower", "sunflower.bmp")
+{}
+
+void SunflowerTile::registerMakerFunc()
+{
+    std::function<std::unique_ptr<Tile>()> f = sunflowerTileMaker;
+    TerrainTile::registerMaker(f, "Sunflower");
+}
+
+std::unique_ptr<Tile> SunflowerTile::sunflowerTileMaker()
+{
+    std::unique_ptr<Tile> tile(new SunflowerTile);
+    return std::move(tile);
+}
+
+LettuceTile::LettuceTile() : TerrainTile("Lettuce", "lettuce.bmp")
+{}
+
+void LettuceTile::registerMakerFunc()
+{
+    std::function<std::unique_ptr<Tile>()> f = lettuceTileMaker;
+    TerrainTile::registerMaker(f, "Lettuce");
+}
+
+std::unique_ptr<Tile> LettuceTile::lettuceTileMaker()
+{
+    std::unique_ptr<Tile> tile(new LettuceTile);
+    return std::move(tile);
+}

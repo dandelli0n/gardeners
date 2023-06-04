@@ -7,16 +7,16 @@
 
 
 #include <unordered_map>
-typedef std::function<int(Game &, Board &)> quest_type;
+typedef std::function<int(Game &, Board &)> questType;
 
 class QuestNameMapper
 {
-    static std::unordered_map<std::string, quest_type> quest_mapping;
+    static std::unordered_map<std::string, questType> questMapping;
 
 public:
-    QuestNameMapper(quest_type quest, const std::string& name);
+    QuestNameMapper(questType quest, const std::string& name);
 
-    static quest_type find(const std::string& quest_name);
+    static questType find(const std::string& questName);
 
 
 };
@@ -25,23 +25,23 @@ public:
 
 
 
-
-class Task {
+class Task
+{
     std::string name;
     std::string description;
     std::string id;
-    static std::vector<Task> tasks;
-    static bool tasks_loaded;
-    static void load_tasks();
-    quest_type quest_fn;
+    questType questFn;
 
-    Task(std::string name, std::string description, std::string id);
 public:
-    Task(); //also loads from file so there is no need for loadfromfile function
-    //int evaluate(Board board);
-    std::string get_name();
-    std::string get_desc();
-    std::string get_id();
+    Task(std::string name, std::string description, std::string id);
+    Task() = default;
+
+    static std::vector<Task> loadTasks();
+
+    int evaluate(Game& game, Board& board);
+    std::string getName();
+    std::string getDesc();
+    std::string getId();
 
 
 };
