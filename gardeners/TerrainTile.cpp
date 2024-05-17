@@ -22,7 +22,7 @@ std::string TerrainTile::getName() const
 
 TerrainTile::TerrainTile(std::string nameString, const std::string& resourceName) : nameString(std::move(nameString))
 {
-    surface = SDL_LoadBMP(std::string("files/sprites/" + resourceName).c_str());
+    surface = SDL_LoadBMP(std::string(resourceName).c_str());
 }
 
 std::unordered_map<std::string, std::function<std::unique_ptr<Tile>()>> TerrainTile::typeNameMakerMapping;

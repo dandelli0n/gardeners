@@ -15,12 +15,19 @@ Game::Game(Renderer* renderer) : renderer(renderer)
     SunflowerTile::registerMakerFunc();
 
     plants = Plant::loadPlants();
+    for (int i = 0; i < plants.size(); ++i)
+    {
+        if (plants[i].getName() == "Portal")
+        {
+            portal = plants[i];
+        }
+    }
     loadedTasks = Task::loadTasks();
 
     setupGame();
 
-    gameResources.mainFont = TTF_OpenFont("Minecraft.ttf", 32);
-    gameResources.bigFont = TTF_OpenFont("Minecraft.ttf", 64);
+    gameResources.mainFont = TTF_OpenFont("Macondo-Regular.ttf", 32);
+    gameResources.bigFont = TTF_OpenFont("Macondo-Regular.ttf", 64);
 }
 
 int Game::getCoins() const
@@ -72,6 +79,7 @@ void Game::eventHandler()
     input.scrollDown = false;
     input.rotate = false;
     input.mirror = false;
+    input.testInput = false;
 
     input.mouseX = 0;
     input.mouseY = 0;
@@ -107,6 +115,11 @@ void Game::eventHandler()
             if (e.key.keysym.scancode == SDL_SCANCODE_R)
             {
                 input.rotate = true;
+            }
+
+            if (e.key.keysym.scancode == SDL_SCANCODE_T)
+            {
+                input.testInput = true;
             }
 
 
@@ -205,6 +218,42 @@ void Game::mainGameView()
     SDL_Rect rectOnBoard = {0,0,64,64};
     bool canPlace = board.canPlacePlant(tileX, tileY, currentPlant);
 
+    bool canPlaceOnBoard = true;
+    //check if plant cn be placed on the board in any formation - rotated, mirrored (that's 8 ways if we are unlucky) TODO -> somehow do it without bruteforce, use that as last resort
+
+
+    if (input.rotate)
+    {
+        currentPlant.getShape().rotate();
+    }
+
+    if (input.mirror)
+    {
+        currentPlant.getShape().mirror();
+    }
+
+    if (input.scrollUp)
+    {
+        currentPlant.nextSelection();
+        demoTile = currentPlant.getNewTile();
+    }
+
+    if (input.scrollDown)
+    {
+        currentPlant.previousSelection();
+        demoTile = currentPlant.getNewTile();
+    }
+
+    if(input.testInput)
+    {
+        canPlaceOnBoard = false;
+    }
+
+    if(!canPlaceOnBoard)
+    {
+        currentPlant = portal;
+    }
+
     for (int x = 0; x < 4; x++)
     {
         for (int y = 0; y < 4; y++)
@@ -222,24 +271,6 @@ void Game::mainGameView()
                     renderer->fillRect(rectOnBoard, gameResources.hoverBadColor);
             }
         }
-    }
-
-
-    if (input.rotate)
-    {
-        currentPlant.getShape().rotate();
-    }
-
-    if (input.scrollUp)
-    {
-        currentPlant.nextSelection();
-        demoTile = currentPlant.getNewTile();
-    }
-
-    if (input.scrollDown)
-    {
-        currentPlant.previousSelection();
-        demoTile = currentPlant.getNewTile();
     }
 
 
@@ -293,7 +324,7 @@ void Game::mainGameView()
     renderer->render(seasonText, sidebarW / 2 + sidebarX - seasonText.rect.w / 2, windowHeight - 232);
 
     Renderer::TextureWithRect durationText;
-    renderer->createLineOfText("Time: " + std::to_string(currentTime) + "/" + std::to_string(getSeasonTime()), &durationText, gameResources.mainFont, gameResources.mainTextColor);
+    renderer->createLineOfText("Time:r" + std::to_string(currentTime) + "/" + std::to_string(getSeasonTime()), &durationText, gameResources.mainFont, gameResources.mainTextColor);
     renderer->render(durationText, sidebarX + 32, windowHeight - 152);
 
     Renderer::TextureWithRect coinsText;

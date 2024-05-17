@@ -8,32 +8,34 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="D:/egyetem/4.felev/frog2/HF/gardeners/cmake-build-debug"/>
+				<Option working_dir="D:/egyetem/6.felev/prog2/gardeners/gardeners/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f D:\egyetem\4.felev\frog2\HF\gardeners\cmake-build-debug\Makefile VERBOSE=1 all"/>
-					<CompileFile command="nmake /NOLOGO /f D:\egyetem\4.felev\frog2\HF\gardeners\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f D:\egyetem\4.felev\frog2\HF\gardeners\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f D:\egyetem\4.felev\frog2\HF\gardeners\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f D:\egyetem\6.felev\prog2\gardeners\gardeners\cmake-build-debug\Makefile VERBOSE=1 all"/>
+					<CompileFile command="nmake /NOLOGO /f D:\egyetem\6.felev\prog2\gardeners\gardeners\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f D:\egyetem\6.felev\prog2\gardeners\gardeners\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f D:\egyetem\6.felev\prog2\gardeners\gardeners\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="D:/egyetem/4.felev/frog2/HF/gardeners/cmake-build-debug"/>
+				<Option working_dir="D:/egyetem/6.felev/prog2/gardeners/gardeners/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f D:\egyetem\4.felev\frog2\HF\gardeners\cmake-build-debug\Makefile VERBOSE=1 edit_cache"/>
-					<CompileFile command="nmake /NOLOGO /f D:\egyetem\4.felev\frog2\HF\gardeners\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f D:\egyetem\4.felev\frog2\HF\gardeners\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f D:\egyetem\4.felev\frog2\HF\gardeners\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f D:\egyetem\6.felev\prog2\gardeners\gardeners\cmake-build-debug\Makefile VERBOSE=1 edit_cache"/>
+					<CompileFile command="nmake /NOLOGO /f D:\egyetem\6.felev\prog2\gardeners\gardeners\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f D:\egyetem\6.felev\prog2\gardeners\gardeners\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f D:\egyetem\6.felev\prog2\gardeners\gardeners\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="gardeners">
-				<Option output="D:/egyetem/4.felev/frog2/HF/gardeners/cmake-build-debug/gardeners.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="D:/egyetem/4.felev/frog2/HF/gardeners/cmake-build-debug"/>
+				<Option output="D:/egyetem/6.felev/prog2/gardeners/gardeners/cmake-build-debug/gardeners.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/egyetem/6.felev/prog2/gardeners/gardeners/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="msvc8"/>
 				<Compiler>
+					<Add directory="D:/egyetem/6.felev/prog2/gardeners/gardeners/vendor/sdl/include"/>
+					<Add directory="D:/egyetem/6.felev/prog2/gardeners/gardeners/vendor/sdl_ttf/include"/>
 					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
 					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
 					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
@@ -44,19 +46,21 @@
 					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f D:\egyetem\4.felev\frog2\HF\gardeners\cmake-build-debug\Makefile VERBOSE=1 gardeners"/>
-					<CompileFile command="nmake /NOLOGO /f D:\egyetem\4.felev\frog2\HF\gardeners\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f D:\egyetem\4.felev\frog2\HF\gardeners\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f D:\egyetem\4.felev\frog2\HF\gardeners\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f D:\egyetem\6.felev\prog2\gardeners\gardeners\cmake-build-debug\Makefile VERBOSE=1 gardeners"/>
+					<CompileFile command="nmake /NOLOGO /f D:\egyetem\6.felev\prog2\gardeners\gardeners\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f D:\egyetem\6.felev\prog2\gardeners\gardeners\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f D:\egyetem\6.felev\prog2\gardeners\gardeners\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="gardeners/fast">
-				<Option output="D:/egyetem/4.felev/frog2/HF/gardeners/cmake-build-debug/gardeners.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="D:/egyetem/4.felev/frog2/HF/gardeners/cmake-build-debug"/>
+				<Option output="D:/egyetem/6.felev/prog2/gardeners/gardeners/cmake-build-debug/gardeners.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/egyetem/6.felev/prog2/gardeners/gardeners/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="msvc8"/>
 				<Compiler>
+					<Add directory="D:/egyetem/6.felev/prog2/gardeners/gardeners/vendor/sdl/include"/>
+					<Add directory="D:/egyetem/6.felev/prog2/gardeners/gardeners/vendor/sdl_ttf/include"/>
 					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
 					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
 					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
@@ -67,75 +71,87 @@
 					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f D:\egyetem\4.felev\frog2\HF\gardeners\cmake-build-debug\Makefile VERBOSE=1 gardeners/fast"/>
-					<CompileFile command="nmake /NOLOGO /f D:\egyetem\4.felev\frog2\HF\gardeners\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f D:\egyetem\4.felev\frog2\HF\gardeners\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f D:\egyetem\4.felev\frog2\HF\gardeners\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f D:\egyetem\6.felev\prog2\gardeners\gardeners\cmake-build-debug\Makefile VERBOSE=1 gardeners/fast"/>
+					<CompileFile command="nmake /NOLOGO /f D:\egyetem\6.felev\prog2\gardeners\gardeners\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f D:\egyetem\6.felev\prog2\gardeners\gardeners\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f D:\egyetem\6.felev\prog2\gardeners\gardeners\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="D:/egyetem/4.felev/frog2/HF/gardeners/cmake-build-debug"/>
+				<Option working_dir="D:/egyetem/6.felev/prog2/gardeners/gardeners/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f D:\egyetem\4.felev\frog2\HF\gardeners\cmake-build-debug\Makefile VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="nmake /NOLOGO /f D:\egyetem\4.felev\frog2\HF\gardeners\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f D:\egyetem\4.felev\frog2\HF\gardeners\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f D:\egyetem\4.felev\frog2\HF\gardeners\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f D:\egyetem\6.felev\prog2\gardeners\gardeners\cmake-build-debug\Makefile VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="nmake /NOLOGO /f D:\egyetem\6.felev\prog2\gardeners\gardeners\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f D:\egyetem\6.felev\prog2\gardeners\gardeners\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f D:\egyetem\6.felev\prog2\gardeners\gardeners\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="D:/egyetem/4.felev/frog2/HF/gardeners/Board.cpp">
+		<Unit filename="D:/egyetem/6.felev/prog2/gardeners/gardeners/Board.cpp">
 			<Option target="gardeners"/>
 		</Unit>
-		<Unit filename="D:/egyetem/4.felev/frog2/HF/gardeners/Board.hpp">
+		<Unit filename="D:/egyetem/6.felev/prog2/gardeners/gardeners/Board.hpp">
 			<Option target="gardeners"/>
 		</Unit>
-		<Unit filename="D:/egyetem/4.felev/frog2/HF/gardeners/Game.cpp">
+		<Unit filename="D:/egyetem/6.felev/prog2/gardeners/gardeners/Game.cpp">
 			<Option target="gardeners"/>
 		</Unit>
-		<Unit filename="D:/egyetem/4.felev/frog2/HF/gardeners/Game.hpp">
+		<Unit filename="D:/egyetem/6.felev/prog2/gardeners/gardeners/Game.hpp">
 			<Option target="gardeners"/>
 		</Unit>
-		<Unit filename="D:/egyetem/4.felev/frog2/HF/gardeners/NonTerrainTile.cpp">
+		<Unit filename="D:/egyetem/6.felev/prog2/gardeners/gardeners/Geometry.cpp">
 			<Option target="gardeners"/>
 		</Unit>
-		<Unit filename="D:/egyetem/4.felev/frog2/HF/gardeners/NonTerrainTile.hpp">
+		<Unit filename="D:/egyetem/6.felev/prog2/gardeners/gardeners/Geometry.hpp">
 			<Option target="gardeners"/>
 		</Unit>
-		<Unit filename="D:/egyetem/4.felev/frog2/HF/gardeners/Plant.cpp">
+		<Unit filename="D:/egyetem/6.felev/prog2/gardeners/gardeners/NonTerrainTile.cpp">
 			<Option target="gardeners"/>
 		</Unit>
-		<Unit filename="D:/egyetem/4.felev/frog2/HF/gardeners/Plant.hpp">
+		<Unit filename="D:/egyetem/6.felev/prog2/gardeners/gardeners/NonTerrainTile.hpp">
 			<Option target="gardeners"/>
 		</Unit>
-		<Unit filename="D:/egyetem/4.felev/frog2/HF/gardeners/Shape.cpp">
+		<Unit filename="D:/egyetem/6.felev/prog2/gardeners/gardeners/Plant.cpp">
 			<Option target="gardeners"/>
 		</Unit>
-		<Unit filename="D:/egyetem/4.felev/frog2/HF/gardeners/Shape.hpp">
+		<Unit filename="D:/egyetem/6.felev/prog2/gardeners/gardeners/Plant.hpp">
 			<Option target="gardeners"/>
 		</Unit>
-		<Unit filename="D:/egyetem/4.felev/frog2/HF/gardeners/Task.cpp">
+		<Unit filename="D:/egyetem/6.felev/prog2/gardeners/gardeners/Renderer.cpp">
 			<Option target="gardeners"/>
 		</Unit>
-		<Unit filename="D:/egyetem/4.felev/frog2/HF/gardeners/Task.hpp">
+		<Unit filename="D:/egyetem/6.felev/prog2/gardeners/gardeners/Renderer.hpp">
 			<Option target="gardeners"/>
 		</Unit>
-		<Unit filename="D:/egyetem/4.felev/frog2/HF/gardeners/TerrainTile.cpp">
+		<Unit filename="D:/egyetem/6.felev/prog2/gardeners/gardeners/Shape.cpp">
 			<Option target="gardeners"/>
 		</Unit>
-		<Unit filename="D:/egyetem/4.felev/frog2/HF/gardeners/TerrainTile.hpp">
+		<Unit filename="D:/egyetem/6.felev/prog2/gardeners/gardeners/Shape.hpp">
 			<Option target="gardeners"/>
 		</Unit>
-		<Unit filename="D:/egyetem/4.felev/frog2/HF/gardeners/Tile.cpp">
+		<Unit filename="D:/egyetem/6.felev/prog2/gardeners/gardeners/Task.cpp">
 			<Option target="gardeners"/>
 		</Unit>
-		<Unit filename="D:/egyetem/4.felev/frog2/HF/gardeners/Tile.hpp">
+		<Unit filename="D:/egyetem/6.felev/prog2/gardeners/gardeners/Task.hpp">
 			<Option target="gardeners"/>
 		</Unit>
-		<Unit filename="D:/egyetem/4.felev/frog2/HF/gardeners/main.cpp">
+		<Unit filename="D:/egyetem/6.felev/prog2/gardeners/gardeners/TerrainTile.cpp">
 			<Option target="gardeners"/>
 		</Unit>
-		<Unit filename="D:/egyetem/4.felev/frog2/HF/gardeners/CMakeLists.txt">
+		<Unit filename="D:/egyetem/6.felev/prog2/gardeners/gardeners/TerrainTile.hpp">
+			<Option target="gardeners"/>
+		</Unit>
+		<Unit filename="D:/egyetem/6.felev/prog2/gardeners/gardeners/Tile.cpp">
+			<Option target="gardeners"/>
+		</Unit>
+		<Unit filename="D:/egyetem/6.felev/prog2/gardeners/gardeners/Tile.hpp">
+			<Option target="gardeners"/>
+		</Unit>
+		<Unit filename="D:/egyetem/6.felev/prog2/gardeners/gardeners/main.cpp">
+			<Option target="gardeners"/>
+		</Unit>
+		<Unit filename="D:/egyetem/6.felev/prog2/gardeners/gardeners/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

@@ -20,6 +20,11 @@ Shape& Plant::getShape()
     return shapesAndMakers[selection].s;
 }
 
+Shape Plant::getCurrentShape()
+{
+    return shapesAndMakers[selection].s;
+}
+
 int Plant::getDuration()
 {
     return duration;
@@ -27,13 +32,14 @@ int Plant::getDuration()
 
 std::vector<Plant> Plant::loadPlants()
 {
+
     enum class Mode
     {
         KeywordSearch, DefinitionSearch, NameDataSearch, TypeDataSearch, ShapeDataSearch, TimeDataSearch
     } currentMode = Mode::DefinitionSearch;
 
     std::vector<Plant> plants;
-    std::ifstream plantsFile("files/plants.txt");
+    std::ifstream plantsFile("plants.txt");
 
     std::string nextWord;
 
@@ -45,6 +51,7 @@ std::vector<Plant> Plant::loadPlants()
     std::string dataStream;
 
     int timeData = 0;
+
 
     while(plantsFile >> nextWord)
     {
@@ -138,10 +145,7 @@ void Plant::nextSelection()
     selection %= shapesAndMakers.size();
 }
 
-Shape Plant::getCurrentShape()
-{
-    return shapesAndMakers[selection].s;
-}
+
 
 void Plant::previousSelection()
 {

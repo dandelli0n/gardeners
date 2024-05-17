@@ -64,7 +64,7 @@ bool Shape::leftColEmpty() {
     return true;
 }
 
-bool Shape::topRowEmty()
+bool Shape::topRowEmpty()
 {
     for (int i = 0; i < 4; ++i)
     {
@@ -102,7 +102,7 @@ void Shape::shiftUp()
 
 void Shape::align()
 {
-    while(topRowEmty())
+    while(topRowEmpty())
         shiftUp();
 
     while (leftColEmpty())
@@ -113,15 +113,30 @@ void Shape::rotate()
 {
     std::array<bool, 16> originalShape = shape;
 
+    /*for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            setAt(i, j, originalShape[j + (i * 4)]);
+        }
+    }*/
+
+    //originalShape = shape;
+
     for (int i = 0; i < 4; i++)
     {
         for (int j = 0; j < 4; j++)
         {
-            setAt(i, j, originalShape[j + i * 4]);
+            setAt(j, i, originalShape[i + (4 - 1 - j) * 4]);
         }
     }
 
-    originalShape = shape;
+    align();
+}
+
+void Shape::mirror()
+{
+    std::array<bool, 16> originalShape = shape;
 
     for (int i = 0; i < 4; i++)
     {
@@ -130,7 +145,6 @@ void Shape::rotate()
             setAt(i, j, originalShape[i + (4 - 1 - j) * 4]);
         }
     }
-
     align();
 }
 

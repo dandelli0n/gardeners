@@ -1,8 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/gardeners.dir/Board.cpp.obj"
   "CMakeFiles/gardeners.dir/Game.cpp.obj"
+  "CMakeFiles/gardeners.dir/Geometry.cpp.obj"
   "CMakeFiles/gardeners.dir/NonTerrainTile.cpp.obj"
   "CMakeFiles/gardeners.dir/Plant.cpp.obj"
+  "CMakeFiles/gardeners.dir/Renderer.cpp.obj"
   "CMakeFiles/gardeners.dir/Shape.cpp.obj"
   "CMakeFiles/gardeners.dir/Task.cpp.obj"
   "CMakeFiles/gardeners.dir/TerrainTile.cpp.obj"

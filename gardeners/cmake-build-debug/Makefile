@@ -46,10 +46,10 @@ RM = "C:\Program Files\JetBrains\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\egyetem\4.felev\frog2\HF\gardeners
+CMAKE_SOURCE_DIR = D:\egyetem\6.felev\prog2\gardeners\gardeners
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\egyetem\4.felev\frog2\HF\gardeners\cmake-build-debug
+CMAKE_BINARY_DIR = D:\egyetem\6.felev\prog2\gardeners\gardeners\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -76,9 +76,9 @@ rebuild_cache\fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\egyetem\4.felev\frog2\HF\gardeners\cmake-build-debug\CMakeFiles D:\egyetem\4.felev\frog2\HF\gardeners\cmake-build-debug\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\egyetem\6.felev\prog2\gardeners\gardeners\cmake-build-debug\CMakeFiles D:\egyetem\6.felev\prog2\gardeners\gardeners\cmake-build-debug\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\egyetem\4.felev\frog2\HF\gardeners\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\egyetem\6.felev\prog2\gardeners\gardeners\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -166,6 +166,30 @@ Game.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\gardeners.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\gardeners.dir\Game.cpp.s
 .PHONY : Game.cpp.s
 
+Geometry.obj: Geometry.cpp.obj
+.PHONY : Geometry.obj
+
+# target to build an object file
+Geometry.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\gardeners.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\gardeners.dir\Geometry.cpp.obj
+.PHONY : Geometry.cpp.obj
+
+Geometry.i: Geometry.cpp.i
+.PHONY : Geometry.i
+
+# target to preprocess a source file
+Geometry.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\gardeners.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\gardeners.dir\Geometry.cpp.i
+.PHONY : Geometry.cpp.i
+
+Geometry.s: Geometry.cpp.s
+.PHONY : Geometry.s
+
+# target to generate assembly for a file
+Geometry.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\gardeners.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\gardeners.dir\Geometry.cpp.s
+.PHONY : Geometry.cpp.s
+
 NonTerrainTile.obj: NonTerrainTile.cpp.obj
 .PHONY : NonTerrainTile.obj
 
@@ -213,6 +237,30 @@ Plant.s: Plant.cpp.s
 Plant.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\gardeners.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\gardeners.dir\Plant.cpp.s
 .PHONY : Plant.cpp.s
+
+Renderer.obj: Renderer.cpp.obj
+.PHONY : Renderer.obj
+
+# target to build an object file
+Renderer.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\gardeners.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\gardeners.dir\Renderer.cpp.obj
+.PHONY : Renderer.cpp.obj
+
+Renderer.i: Renderer.cpp.i
+.PHONY : Renderer.i
+
+# target to preprocess a source file
+Renderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\gardeners.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\gardeners.dir\Renderer.cpp.i
+.PHONY : Renderer.cpp.i
+
+Renderer.s: Renderer.cpp.s
+.PHONY : Renderer.s
+
+# target to generate assembly for a file
+Renderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\gardeners.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\gardeners.dir\Renderer.cpp.s
+.PHONY : Renderer.cpp.s
 
 Shape.obj: Shape.cpp.obj
 .PHONY : Shape.obj
@@ -349,12 +397,18 @@ help:
 	@echo ... Game.obj
 	@echo ... Game.i
 	@echo ... Game.s
+	@echo ... Geometry.obj
+	@echo ... Geometry.i
+	@echo ... Geometry.s
 	@echo ... NonTerrainTile.obj
 	@echo ... NonTerrainTile.i
 	@echo ... NonTerrainTile.s
 	@echo ... Plant.obj
 	@echo ... Plant.i
 	@echo ... Plant.s
+	@echo ... Renderer.obj
+	@echo ... Renderer.i
+	@echo ... Renderer.s
 	@echo ... Shape.obj
 	@echo ... Shape.i
 	@echo ... Shape.s

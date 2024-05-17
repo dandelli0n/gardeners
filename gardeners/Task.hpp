@@ -9,6 +9,7 @@
 #include <unordered_map>
 typedef std::function<int(Game &, Board &)> questType;
 
+//class to search quest's function by its name
 class QuestNameMapper
 {
     static std::unordered_map<std::string, questType> questMapping;
@@ -21,6 +22,7 @@ public:
 
 };
 
+//black magic, delete from skeleton
 #define QUEST_FUNC(function_name) int function_name (Game&, Board&); static QuestNameMapper qmapper ##function_name (function_name, #function_name); int function_name (Game& game, Board& board)
 
 
@@ -36,11 +38,16 @@ public:
     Task(std::string name, std::string description, std::string id);
     Task() = default;
 
+    //loads up tasks from a file
     static std::vector<Task> loadTasks();
 
+    //evaluates board based on the current game state and the current task
     int evaluate(Game& game, Board& board);
+    //returns task name
     std::string getName();
+    //returns task description
     std::string getDesc();
+    //returns task ID
     std::string getId();
 
 

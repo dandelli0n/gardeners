@@ -8,20 +8,24 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "D:/egyetem/4.felev/frog2/HF/gardeners/Board.cpp" "D:/egyetem/4.felev/frog2/HF/gardeners/cmake-build-debug/CMakeFiles/gardeners.dir/Board.cpp.obj"
-  "D:/egyetem/4.felev/frog2/HF/gardeners/Game.cpp" "D:/egyetem/4.felev/frog2/HF/gardeners/cmake-build-debug/CMakeFiles/gardeners.dir/Game.cpp.obj"
-  "D:/egyetem/4.felev/frog2/HF/gardeners/NonTerrainTile.cpp" "D:/egyetem/4.felev/frog2/HF/gardeners/cmake-build-debug/CMakeFiles/gardeners.dir/NonTerrainTile.cpp.obj"
-  "D:/egyetem/4.felev/frog2/HF/gardeners/Plant.cpp" "D:/egyetem/4.felev/frog2/HF/gardeners/cmake-build-debug/CMakeFiles/gardeners.dir/Plant.cpp.obj"
-  "D:/egyetem/4.felev/frog2/HF/gardeners/Shape.cpp" "D:/egyetem/4.felev/frog2/HF/gardeners/cmake-build-debug/CMakeFiles/gardeners.dir/Shape.cpp.obj"
-  "D:/egyetem/4.felev/frog2/HF/gardeners/Task.cpp" "D:/egyetem/4.felev/frog2/HF/gardeners/cmake-build-debug/CMakeFiles/gardeners.dir/Task.cpp.obj"
-  "D:/egyetem/4.felev/frog2/HF/gardeners/TerrainTile.cpp" "D:/egyetem/4.felev/frog2/HF/gardeners/cmake-build-debug/CMakeFiles/gardeners.dir/TerrainTile.cpp.obj"
-  "D:/egyetem/4.felev/frog2/HF/gardeners/Tile.cpp" "D:/egyetem/4.felev/frog2/HF/gardeners/cmake-build-debug/CMakeFiles/gardeners.dir/Tile.cpp.obj"
-  "D:/egyetem/4.felev/frog2/HF/gardeners/main.cpp" "D:/egyetem/4.felev/frog2/HF/gardeners/cmake-build-debug/CMakeFiles/gardeners.dir/main.cpp.obj"
+  "D:/egyetem/6.felev/prog2/gardeners/gardeners/Board.cpp" "D:/egyetem/6.felev/prog2/gardeners/gardeners/cmake-build-debug/CMakeFiles/gardeners.dir/Board.cpp.obj"
+  "D:/egyetem/6.felev/prog2/gardeners/gardeners/Game.cpp" "D:/egyetem/6.felev/prog2/gardeners/gardeners/cmake-build-debug/CMakeFiles/gardeners.dir/Game.cpp.obj"
+  "D:/egyetem/6.felev/prog2/gardeners/gardeners/Geometry.cpp" "D:/egyetem/6.felev/prog2/gardeners/gardeners/cmake-build-debug/CMakeFiles/gardeners.dir/Geometry.cpp.obj"
+  "D:/egyetem/6.felev/prog2/gardeners/gardeners/NonTerrainTile.cpp" "D:/egyetem/6.felev/prog2/gardeners/gardeners/cmake-build-debug/CMakeFiles/gardeners.dir/NonTerrainTile.cpp.obj"
+  "D:/egyetem/6.felev/prog2/gardeners/gardeners/Plant.cpp" "D:/egyetem/6.felev/prog2/gardeners/gardeners/cmake-build-debug/CMakeFiles/gardeners.dir/Plant.cpp.obj"
+  "D:/egyetem/6.felev/prog2/gardeners/gardeners/Renderer.cpp" "D:/egyetem/6.felev/prog2/gardeners/gardeners/cmake-build-debug/CMakeFiles/gardeners.dir/Renderer.cpp.obj"
+  "D:/egyetem/6.felev/prog2/gardeners/gardeners/Shape.cpp" "D:/egyetem/6.felev/prog2/gardeners/gardeners/cmake-build-debug/CMakeFiles/gardeners.dir/Shape.cpp.obj"
+  "D:/egyetem/6.felev/prog2/gardeners/gardeners/Task.cpp" "D:/egyetem/6.felev/prog2/gardeners/gardeners/cmake-build-debug/CMakeFiles/gardeners.dir/Task.cpp.obj"
+  "D:/egyetem/6.felev/prog2/gardeners/gardeners/TerrainTile.cpp" "D:/egyetem/6.felev/prog2/gardeners/gardeners/cmake-build-debug/CMakeFiles/gardeners.dir/TerrainTile.cpp.obj"
+  "D:/egyetem/6.felev/prog2/gardeners/gardeners/Tile.cpp" "D:/egyetem/6.felev/prog2/gardeners/gardeners/cmake-build-debug/CMakeFiles/gardeners.dir/Tile.cpp.obj"
+  "D:/egyetem/6.felev/prog2/gardeners/gardeners/main.cpp" "D:/egyetem/6.felev/prog2/gardeners/gardeners/cmake-build-debug/CMakeFiles/gardeners.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "MSVC")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "../vendor/sdl/include"
+  "../vendor/sdl_ttf/include"
   )
 
 # The set of dependency files which are needed:

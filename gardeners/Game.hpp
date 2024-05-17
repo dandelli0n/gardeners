@@ -10,6 +10,7 @@
 #include <SDL_ttf.h>
 #include "Renderer.hpp"
 
+//most of the game logic is declared here
 
 class Game
 {
@@ -19,6 +20,7 @@ private:
         Spring, Summer, Fall, Winter
     } season = Season::Spring;
 
+
     int currentTime = 0;
 
     std::string playername;
@@ -26,6 +28,7 @@ private:
     Task tasks[4];
 
     std::vector<Plant> plants;
+    Plant portal;
     std::vector<Task> loadedTasks;
 
     Plant currentPlant;
@@ -39,6 +42,7 @@ private:
 
     bool shouldRun = true;
 
+    //struct for all potential inputs
     struct Input
     {
         bool clicked;
@@ -46,6 +50,7 @@ private:
         int mouseY;
 
         bool enter;
+        bool testInput;
 
         bool rotate;
         bool mirror;
@@ -58,6 +63,7 @@ private:
         inline void clearTextInput() { textInputBuffer[0] = '\0'; }
     } input;
 
+    //struct for the resources needed for rendering
     struct GameResources
     {
         TTF_Font * mainFont;
@@ -75,32 +81,49 @@ private:
         SDL_Color hoverBadColor =  {177,123,123,255/2};
     } gameResources;
 
+    //handles the possible events
     void eventHandler();
 
+    //class of the main views in the game
     enum class View
     {
         MainMenu, MainGame, NewGame, QuestsView, EndGame
     } view = View::MainMenu;
 
+    //advances the game to the next season
     void nextSeason();
+    //gets the max time to the current season
     int getSeasonTime() const;
+    //converts current season name to string
     std::string getSeasonString() const;
+    //returns the active quests' IDs
     std::pair<int, int> getCurrentQuestIds();
 
+    //renders "main menu" view
     void mainMenuView();
+    //renders "main game" view
     void mainGameView();
+    //renders "new game" view
     void newGameView();
+    //renders "quests" view
     void questsView();
+    //renders "game end" view
     void endGameView();
 
+    //switches current view to the specified one
     void switchView(View newView);
+    //sets up game
     void setupGame();
 
 public:
     Game(Renderer* renderer); //starts up game
+    //returns number of coins
     int getCoins() const;
+    //runs the game
     void run();
+    //main game loop
     void gameLoop();
+
 };
 
 

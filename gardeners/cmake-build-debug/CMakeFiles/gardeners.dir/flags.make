@@ -4,7 +4,7 @@
 # compile CXX with C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30037/bin/Hostx86/x86/cl.exe
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -ID:\egyetem\6.felev\prog2\gardeners\gardeners\vendor\sdl\include -ID:\egyetem\6.felev\prog2\gardeners\gardeners\vendor\sdl_ttf\include
 
 CXX_FLAGS = /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -MDd -std:c++14
 

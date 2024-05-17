@@ -6,6 +6,7 @@ void LakeTile::newTilePlacedNext(Tile *t)
         placedNext++;
 }
 
+//if all 4 sides are occupied, it gives 1 point
 int LakeTile::worthPoints() const
 {
     if (placedNext >= 4)
@@ -54,6 +55,7 @@ void LakeTile::draw(Renderer *r, int x, int y)
     //r->drawTexture(texToUse, rect);
 }
 
+
 std::string LakeTile::getName() const
 {
     return "Lake";
@@ -76,4 +78,39 @@ std::string EmptyTile::getName() const
 bool EmptyTile::isOpen() const
 {
     return true;
+}
+
+bool SoilTile::isOpen() const
+{
+    return open;
+}
+
+std::string SoilTile::getName() const
+{
+    return std::string();
+}
+
+SoilTile::~SoilTile()
+{
+
+}
+
+void SoilTile::draw(Renderer *r, int x, int y)
+{
+    Tile::draw(r, x, y);
+}
+
+SoilTile::SoilTile()
+{
+    soilSurface = SDL_LoadBMP("files/sprites/soil.bmp");
+}
+
+void SoilTile::openTile()
+{
+    open = true;
+}
+
+void SoilTile::closeTile()
+{
+    open = false;
 }
